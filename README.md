@@ -42,7 +42,8 @@ What makes this game interesting to score is the lookahead in the scoring for st
 
 ------------------
 
-Remarks : fronter.war is produced during the jenkins build , especially [here](http://home.nabla.mobi:8380/jenkins/).
+Remarks : fronter installer is produced during the jenkins build , especially [here](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-fronter/).
+In order to install, double click on the [FRONTERInstaller.jar](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-fronter/lastSuccessfulBuild/artifact/fronter-installer/target/FRONTERInstaller.jar)
 
 ------------------
 

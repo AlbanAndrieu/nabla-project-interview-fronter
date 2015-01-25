@@ -16,6 +16,8 @@ public class DecodeRoll {
 	private boolean isStrike = false;
 	private boolean isMiss= false; // TODO might not be needed
 	private boolean isFrameComplete = false;
+	
+	public static int MAX_PIN_NUMBER = 10;
 
 	public DecodeRoll(@Nonnull final Character aRolls) {
 
@@ -27,7 +29,7 @@ public class DecodeRoll {
 		if (roll.equals('X')) {
 			this.isStrike = true;
 			this.isMiss = false;
-			this.pin = 10;
+			this.pin = MAX_PIN_NUMBER;
 			this.isFrameComplete = true;
 		} else if (roll.equals('-')) {
 			this.isMiss = true;
@@ -36,7 +38,7 @@ public class DecodeRoll {
 		} else if (roll.equals('/')) {
 			this.isSpare = true;
 			this.isMiss = false;
-			this.pin = 10;
+			this.pin = MAX_PIN_NUMBER;
 			this.isFrameComplete = true;
 		} else {
 			pin = Character.getNumericValue(roll);

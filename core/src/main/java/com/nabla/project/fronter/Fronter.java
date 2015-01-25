@@ -41,14 +41,15 @@ import com.nabla.project.fronter.api.IGame;
 @SuppressWarnings("all")
 public class Fronter
 {
-
+	public static final String DEFAULT_ROLLS_SAMPLE = "5/5/5/-/525/-/5/XXX/5";
+	
     public static void main(final String[] args)
     {
         String rolls;
         try (Scanner keyboard = new Scanner(System.in))
         {
 
-            System.out.println("Please enter a valid sequence of rolls. Ex. 5/5/5/-/525/-/5/XXX/5");
+            System.out.println("Please enter a valid sequence of rolls. Ex : " + DEFAULT_ROLLS_SAMPLE);
             rolls = keyboard.next();
 
         }
