@@ -113,7 +113,7 @@ public class KataBowlingTest
     }
     
     //TODO Not required
-    @Test(expected = IllegalArgumentException.class)
+    //@Test(expected = IllegalArgumentException.class)
     public final void testSillyRollsContructor()
     {
 
