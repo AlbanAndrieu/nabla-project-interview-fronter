@@ -31,12 +31,10 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma;
+package com.nabla.project.fronter;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
-import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -44,58 +42,58 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import com.nabla.project.visma.api.IProduct;
+import com.nabla.project.fronter.api.IGame;
 
 @Immutable
-@XmlRootElement
-public class House implements IProduct, Comparable<House>, Serializable
+public class KataBowling implements IGame, Comparable<KataBowling>, Serializable
 {
 
     private static final long  serialVersionUID = 1L;
 
-    public static final String DEFAULT_NAME     = "House";
+    public static final String DEFAULT_NAME     = "KataBowling";
 
-    private final String       name             = House.DEFAULT_NAME; // NOSONAR
-    private final BigDecimal   price;
+    private final String       name             = KataBowling.DEFAULT_NAME; // NOSONAR
+    
+    public static final int DEFAULT_FRAMES_NUMBER = 10;
+    public static final int DEFAULT_PINS_NUMBER = 10;
+    public static final int DEFAULT_TRIES_NUMBER = 2;
+    
+    @Nonnull
+    //@Pattern(regexp="(\\d\\/)+\\d", message="Invalid rolls!")
+    private final String   rolls;
+    
+    private int score = 0;
 
-    public House()
+    public KataBowling()
     {
         throw new AssertionError();
     }
 
-    public House(@Nonnull @Nonnegative final BigDecimal aPrice)
+    public KataBowling(@Nonnull final String aRolls)
     {
 
-        this.price = aPrice;
+        this.rolls = aRolls;
         this.validateState();
 
     }
 
-    public House(@Nonnegative final int aPrice)
-    {
-        this(new BigDecimal(aPrice));
-    }
-
     /**
-     * Validate immutable data like BigDecimal.
+     * Validate immutable data like String.
      * It raise the exception IllegalArgumentException when arguments are wrong
      */
     private void validateState()
     {
-        if (null == this.price) // NOPMD
+        if (null == this.rolls) // NOPMD
         {
-            throw new IllegalArgumentException("Price cannot be null");
+            throw new IllegalArgumentException("Rolls cannot be null");
         }
-        if (this.price.compareTo(BigDecimal.ZERO) <= 0) // NOPMD
-        {
-            throw new IllegalArgumentException("Amount must not be negatif or zero");
-        }
+        // TODO more validation
     }
 
     @Override
-    public BigDecimal getPrice()
+    public String getRolls()
     {
-        return this.price;
+        return this.rolls;
     }
 
     @Override
@@ -104,6 +102,12 @@ public class House implements IProduct, Comparable<House>, Serializable
         return this.name;
     }
 
+
+	@Override
+	public int getScore() {
+		return this.score;
+	}
+	
     @Override
     public final String toString()
     {
@@ -111,7 +115,8 @@ public class House implements IProduct, Comparable<House>, Serializable
         final StringBuilder str = new StringBuilder();
 
         str.append("name:").append(this.getName()).append(' ');
-        str.append("price:").append(this.getPrice());
+        str.append("rolls:").append(this.getRolls()).append(' ');
+        str.append("score:").append(this.getScore());
 
         return str.toString();
 
@@ -122,7 +127,7 @@ public class House implements IProduct, Comparable<House>, Serializable
     {
         return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
                 // if deriving: appendSuper(super.hashCode()).
-                append(this.getName()).append(this.getPrice()).toHashCode();
+                append(this.getName()).append(this.getScore()).toHashCode();
     }
 
     @Override
@@ -136,27 +141,27 @@ public class House implements IProduct, Comparable<House>, Serializable
         {
             return true;
         }
-        if (!(obj instanceof House))
+        if (!(obj instanceof KataBowling))
         {
             return false;
         }
 
-        final House rhs = (House) obj;
+        final KataBowling rhs = (KataBowling) obj;
         return new EqualsBuilder().
         // if deriving: appendSuper(super.equals(obj)).
-                append(this.name, rhs.name).append(this.price, rhs.price).isEquals();
+                append(this.name, rhs.name).append(this.score, rhs.score).isEquals();
     }
 
     @Override
-    public int compareTo(final House aHouse)
+    public int compareTo(final KataBowling aGame)
     {
-        if (this == aHouse)
+        if (this == aGame)
         {
             return 0;
         }
 
         // the object fields are never null
-        final int comparison = this.price.compareTo(aHouse.price);
+        final int comparison = new Integer(this.score).compareTo(aGame.score);
         if (comparison != 0) // NOPMD
         {
             return comparison;

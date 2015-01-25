@@ -31,13 +31,31 @@
  *
  * License 1.0
  */
-/**
- * Domain classes used to produce the JSON and XML output for the RESTful services. 
- * <p>
- * These classes contain the JAXB annotations.
- *
- * @since 1.0
- * @author albandri
- * @version 1.1
- */
-package com.nabla.project.visma.api;
+package com.nabla.project.fronter;
+
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+import com.nabla.project.fronter.api.IGame;
+
+@SuppressWarnings("all")
+public class Fronter
+{
+
+    public static void main(final String[] args)
+    {
+        String rolls;
+        try (Scanner keyboard = new Scanner(System.in))
+        {
+
+            System.out.println("Please enter a valid sequence of rolls. Ex. 5/5/5/-/525/-/5/XXX/5");
+            rolls = keyboard.next();
+
+        }
+
+        final IGame game = new KataBowling(rolls);
+
+
+    }
+
+}

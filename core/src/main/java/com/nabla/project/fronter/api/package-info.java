@@ -31,32 +31,13 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.api;
-
-import java.math.BigDecimal;
-
 /**
- * DOCUMENT ME! albandri.
- * 
- * @author $Author$
- * @version $Revision$
- * @since $Date$
+ * Domain classes used to produce the JSON and XML output for the RESTful services. 
+ * <p>
+ * These classes contain the JAXB annotations.
+ *
+ * @since 1.0
+ * @author albandri
+ * @version 1.1
  */
-public interface IProduct
-{
-
-    /**
-     * Give the price or amount of the product in NOK.
-     * 
-     * @return the price or amount of the product
-     */
-    BigDecimal getPrice();
-
-    /**
-     * Give the name of the product.
-     * 
-     * @return the name of the product
-     */
-    String getName();
-
-}
+package com.nabla.project.fronter.api;

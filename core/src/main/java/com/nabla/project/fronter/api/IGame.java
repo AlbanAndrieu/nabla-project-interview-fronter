@@ -31,39 +31,36 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma;
+package com.nabla.project.fronter.api;
 
-import java.math.BigDecimal;
-import java.util.Scanner;
+/**
+ * DOCUMENT ME! albandri.
+ * 
+ * @author $Author$
+ * @version $Revision$
+ * @since $Date$
+ */
+public interface IGame {
 
-import com.nabla.project.visma.api.IProduct;
+	/**
+	 * Give the rolls entered for the game.
+	 * 
+	 * @return the rolls of the game
+	 */
+	String getRolls();
 
-@SuppressWarnings("all")
-public class Visma
-{
+	/**
+	 * Give the final score of the game.
+	 * 
+	 * @return the score of the game
+	 */
+	int getScore();
 
-    public static void main(final String[] args)
-    {
-        double loanAmount;// double value loan amount
-        double annualInterestRate;// double value interest rate
-        int numberOfYears;// int value for number of months
-
-        try (Scanner keyboard = new Scanner(System.in))
-        {
-
-            System.out.println("Please enter the amount of your loan. Ex. 200000");
-            loanAmount = keyboard.nextDouble();
-
-            System.out.println("Please enter the annual interest rate as a decimal. Ex. 6.5 for 6.5% = .065");
-            annualInterestRate = keyboard.nextDouble();
-
-            System.out.println("Please enter the number of years you have to pay back your loan. Ex. 30");
-            numberOfYears = keyboard.nextInt();
-        }
-
-        final IProduct product = new House(new BigDecimal(loanAmount));
-
-
-    }
+	/**
+	 * Give the name of the game.
+	 * 
+	 * @return the name of the game
+	 */
+	String getName();
 
 }
