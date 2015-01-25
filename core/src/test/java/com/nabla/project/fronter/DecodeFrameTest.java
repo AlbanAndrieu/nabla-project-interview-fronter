@@ -126,6 +126,19 @@ public class DecodeFrameTest {
 		Assert.assertEquals((10 + 20) + (10 + 10) + 10, oneFrame.compute());
 	}	
 	
+	
+	@Test
+	public final void testRollQuadrupleStrike() {
+		DecodeFrame oneFrame = new DecodeFrame("XXXX");
+		Assert.assertEquals((10 + 20) + (10 + 20) + (10 + 10) +10, oneFrame.compute());
+	}	
+		
+	@Test
+	public final void testRollQuintupleStrike() {
+		DecodeFrame oneFrame = new DecodeFrame("XXXXX");
+		Assert.assertEquals((10 + 20) + (10 + 20) + (10 + 20) + (10 + 10) +10, oneFrame.compute());
+	}	
+	
 	@Test
 	public final void testRollSpareAndStrike() {
 		DecodeFrame oneFrame = new DecodeFrame("/X/8"); // Same as 0/X0/8

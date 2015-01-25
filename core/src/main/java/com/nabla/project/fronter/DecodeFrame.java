@@ -49,23 +49,26 @@ public class DecodeFrame {
 			if (isPendingBonus > 0) {
 				System.out.println("Pending bonus : " + isPendingBonus + " - Try count is : " + (triesCount + 1) + " of " + DEFAULT_TRIES_MAX_NUMBER);
 				if (triesCount == 0) {		
-					isPendingBonus--;					
+									
 					if (aRoll.isSpare()) {
 						System.out.println("A spare!!! A the first try, is not possible, no bonus added");
 						//So we decide / means 0/ and no bonus added
 						System.out.println("Bonus not added to score : " + 0 + " - Remaining bonus : " + isPendingBonus);
+						isPendingBonus--;	
 					} else {
 						if (isPendingStrike > 0) {
 							int pendingStrike = new Float(isPendingStrike + 0.5f).intValue();
 							System.out.println("Pending strike : " + pendingStrike);
 							System.out.println("Bonus for " + isPendingStrike + " strike added to score : " + (pin * pendingStrike) + " - Remaining bonus : " + isPendingBonus);
-							score += (pin * pendingStrike);			
+							score += (pin * pendingStrike);		
+							isPendingBonus-=pendingStrike;	
 						}
 						if (isPendingSpare > 0) {
 							System.out.println("Pending spare : " + isPendingSpare);
 							System.out.println("Bonus for " + isPendingSpare + " spare added to score : " + pin + " - Remaining bonus : " + isPendingBonus);
 							score += pin;
 							//isPendingSpare--;
+							isPendingBonus--;	
 						}												
 					}
 				}

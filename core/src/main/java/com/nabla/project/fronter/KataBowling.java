@@ -105,7 +105,7 @@ public class KataBowling implements IGame, Comparable<KataBowling>, Serializable
 
 	@Override
 	public int getScore() {
-		return this.score;
+		return new DecodeFrame(this.getRolls()).compute();
 	}
 	
     @Override

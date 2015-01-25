@@ -33,12 +33,9 @@
  */
 package com.nabla.project.fronter;
 
-import java.math.BigDecimal;
-
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.nabla.project.fronter.KataBowling;
 import com.nabla.project.fronter.api.IGame;
 
 /**
@@ -52,8 +49,13 @@ public class KataBowlingTest
 {
     
     public static final int DEFAULT_SCORE = 0;
-    public static final String DEFAULT_TEST_ROLLS = new String("XXXXXXXXXXXX");
-    public static final int DEFAULT_TEST_EXPECTED_SCORE = 300;    
+    public static final String TEST_CASE1_ROLLS = new String("XXXXXXXXXXXX");
+    public static final String TEST_CASE2_ROLLS = new String("9-9-9-9-9-9-9-9-9-9-");
+    public static final String TEST_CASE3_ROLLS = new String("5/5/5/5/5/5/5/5/5/5/5");
+    
+    public static final int TEST_CASE1_ROLLS_EXPECTED_SCORE = 300;
+    public static final int TEST_CASE2_ROLLS_EXPECTED_SCORE = 90;    
+    public static final int TEST_CASE3_ROLLS_EXPECTED_SCORE = 150;    
     
     @Test(expected = AssertionError.class)
     public final void testEmptyContructor()
@@ -78,25 +80,45 @@ public class KataBowlingTest
     public final void testRollsContructor()
     {
 
-        Assert.assertFalse(new Integer(new KataBowling(KataBowlingTest.DEFAULT_TEST_ROLLS).getScore()).equals(KataBowlingTest.DEFAULT_SCORE));
-        Assert.assertEquals(KataBowlingTest.DEFAULT_TEST_EXPECTED_SCORE, new KataBowling(KataBowlingTest.DEFAULT_TEST_ROLLS).getScore());
+        Assert.assertFalse(new Integer(new KataBowling(KataBowlingTest.TEST_CASE1_ROLLS).getScore()).equals(KataBowlingTest.DEFAULT_SCORE));
+        Assert.assertEquals(KataBowlingTest.TEST_CASE1_ROLLS_EXPECTED_SCORE, new KataBowling(KataBowlingTest.TEST_CASE1_ROLLS).getScore());
     }
 
     @Test
     public final void testToString()
     {
 
-        Assert.assertFalse(new KataBowling(KataBowlingTest.DEFAULT_TEST_ROLLS).equals("name:" + KataBowling.DEFAULT_NAME + " rolls:" + KataBowlingTest.DEFAULT_TEST_ROLLS + " score:" + KataBowlingTest.DEFAULT_SCORE));
-        Assert.assertEquals("name:" + KataBowling.DEFAULT_NAME + " rolls:" + KataBowlingTest.DEFAULT_TEST_ROLLS + " score:" + KataBowlingTest.DEFAULT_TEST_EXPECTED_SCORE, new KataBowling(KataBowlingTest.DEFAULT_TEST_ROLLS).toString());
+        Assert.assertFalse(new KataBowling(KataBowlingTest.TEST_CASE1_ROLLS).equals("name:" + KataBowling.DEFAULT_NAME + " rolls:" + KataBowlingTest.TEST_CASE1_ROLLS + " score:" + KataBowlingTest.DEFAULT_SCORE));
+        Assert.assertEquals("name:" + KataBowling.DEFAULT_NAME + " rolls:" + KataBowlingTest.TEST_CASE1_ROLLS + " score:" + KataBowlingTest.TEST_CASE1_ROLLS_EXPECTED_SCORE, new KataBowling(KataBowlingTest.TEST_CASE1_ROLLS).toString());
 
     }
 
+    @Test
+    public final void testCase1()
+    {
+        Assert.assertEquals(KataBowlingTest.TEST_CASE1_ROLLS_EXPECTED_SCORE, new KataBowling(KataBowlingTest.TEST_CASE1_ROLLS).getScore());
+    }
+
+    @Test
+    public final void testCase2()
+    {
+        Assert.assertEquals(KataBowlingTest.TEST_CASE2_ROLLS_EXPECTED_SCORE, new KataBowling(KataBowlingTest.TEST_CASE2_ROLLS).getScore());
+    }
+
+    @Test
+    public final void testCase3()
+    {
+
+        Assert.assertEquals(KataBowlingTest.TEST_CASE3_ROLLS_EXPECTED_SCORE, new KataBowling(KataBowlingTest.TEST_CASE3_ROLLS).getScore());
+    }
+    
     //TODO Not required
     @Test(expected = IllegalArgumentException.class)
     public final void testSillyRollsContructor()
     {
 
-        Assert.assertEquals(null, new KataBowling("ABC"));
+    	IGame game = new KataBowling("ABC");    	
+        Assert.assertEquals(0, game.getScore());
     }
 
 }
