@@ -1,7 +1,7 @@
 import org.junit.Test
 
-import com.nabla.project.fonter.KataService
-import com.nabla.project.fonter.api.IGame
+import com.nabla.project.fronter.KataService
+import com.nabla.project.fronter.api.IGame
 import static org.junit.Assert.assertEquals
 
 class SampleITest extends GroovyTestCase {

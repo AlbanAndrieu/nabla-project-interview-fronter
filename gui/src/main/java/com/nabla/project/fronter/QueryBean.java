@@ -87,6 +87,16 @@ public class QueryBean implements Serializable
         this.score = aScore;
     }
 
+    /**
+     * Get score.
+     * 
+     * @return
+     */
+    public Integer getScore()
+    {
+        return this.score;
+    }
+
     public void setNavigationBean(final NavigationBean navigationBean)
     {
         this.navigationBean = navigationBean;
@@ -97,7 +107,7 @@ public class QueryBean implements Serializable
      * 
      * @return
      */
-    public String getScore()
+    public String getResult()
     {
         this.setScore(this.service.getScore(this.getRolls()));
 
