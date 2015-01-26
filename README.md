@@ -60,11 +60,22 @@ On unix, please make sure you can execute the installer :
     chmod 777 FRONTERInstaller.jar
     sudo ./FRONTERInstaller.jar
     
-I have also added a quick GUI, that you can find at http://localhost:9090/
+Once installed :
+
+    cd /usr/local/fronter-installer-1.0.1-SNAPSHOT
+    sudo chmod 777 ./run.sh
+    sudo ./run.sh start
+    
+You can find a basic GUI at http://localhost:9090/rolls.xhtml
+Enjoy!!!
 
 ------------------
 
+### My resources
+
 Other resources can be found on my [googlecode](https://code.google.com/p/alban/w/list) wiki:
+
+Below resources are avaialable from outside my network :
 
 - Set up your workstation : [workstation](https://github.com/AlbanAndrieu/ansible-workstation) 
 
@@ -92,32 +103,56 @@ Only for local user to the network :
 
 ### My opensource projects
 
-On GitHub I have mostly Ansible roles. 
+On [GitHub](https://github.com/AlbanAndrieu) I have mostly [Ansible](http://www.ansible.com/home) roles. 
 
-I am trying to contribute as much as possible (instead of creating new project).
+I am trying to contribute as much as possible (instead of creating new project). And the one I have created are shared on the Ansible repository [ansible-galaxy](https://galaxy.ansible.com/list#/users/1487)
 
-All the roles I am using are gathered inside this one https://github.com/AlbanAndrieu/ansible-nabla which is using them as git submodule.
+All the roles I am using are gathered inside a main one [ansible-nabla](https://github.com/AlbanAndrieu/ansible-nabla) which is using the other as git submodule.
 
-This role is creating an Continuous Delivery build farm and everything needed for a dev, sysadmin, qa, ui, release manager guy to work.
+This main project is creating an continuous delivery build farm and everything needed for a dev, sysadmin, qa, ui, release manager guy to work.
 
-Jenkins, Sonar, Nexus, Docker, Eclipse, Logstash. 
+You will even have stuff like :
 
-You will even have stuff like Eclipse (with basic plugins), ZaProxy, Jmeter, VisualVM tools, and a FrontEnd Apache with mod pagespeed, fail2ban, DeniedOfService, AWStats, a Varnish load balancer, Zabbix, Mon, Monit, Supervisor, Jboss, Tomcat, Selenium and Xvfb ready and more.
+ - Jenkins (scheduler)
+ - Sonar (metrics)
+ - Nexus (repository)
+ - Docker (provisioning)
+ - Logstash (monitoring)
+ - Eclipse (with basic plugins), 
+ - ZaProxy (security)
+ - Jmeter (performance)
+ - VisualVM (performance)
+ - Selenium and Xvfb (End2End test)
+ 
+And a FrontEnd Apache with mod pagespeed, fail2ban, DeniedOfService, AWStats, a Varnish load balancer, Zabbix, Mon, Monit, Supervisor, Jboss, Tomcat ready and more.
 
 Mostly, there is a bit more than the basic tools for a production, staging, dev environment all setted to work together with as much security as possible.
-
 
 My "old" project https://code.google.com/p/alban/ which is using http://www.andromda.org/index.html is an UML code generator. 
 I am now more using this project because it generate a lot of code and it is resource demanding for my devops environment. 
 This project is using JBoss, Seam, Hibernate, Spring,GWT, JSF, Arquillian, ... So it was is quite hard to get Jacoco with mutation testing working with it.
+In this repo there is also some sample projects used as ProofOfConcept
+
+ - A database best pratices [nabla-databases-integration](http://home.nabla.mobi:8380/jenkins/job/nabla-databases-integration/)
+ 
+ - A server integration best pratices [nabla-uml-integration](http://home.nabla.mobi:8380/jenkins/job/nabla-servers-integration/)
+ 
+ - An UML best pratices [nabla-uml-integration](http://home.nabla.mobi:8380/jenkins/job/nabla-uml-integration/)
+ 
+Goal is mostly to ensure that any of my code will be able to work with any [database](http://home.nabla.mobi:8380/jenkins/job/nabla-databases-matrix/) on any [servers/browsers](http://home.nabla.mobi:8380/jenkins/job/nabla-browsers-matrix/) using [selenium](http://home.nabla.mobi:8380/jenkins/job/nabla-servers-jsf-simple-selenium/).
+ 
+------------------
+
+### VISMA : An opensource projects to showcase best pratices
 
 Have a quick look at the below project (it has some of the quality metric that I am using at work, like unit test, integration test, mutation test, perf test, load testing, end2end test, functional testing)
-Jenkins -> http://home.nabla.mobi:8380/jenkins/job/nabla-project-interview-visma/
-Sonar -> http://home.nabla.mobi:9000/dashboard/index/418
+ - [Jenkins](http://home.nabla.mobi:8380/jenkins/job/nabla-project-interview-visma/)
+ - [Sonar](http://home.nabla.mobi:9000/dashboard/index/418)
 
-Visma is a very basic code done for an interview that you can easilly install using IZPack at http://home.nabla.mobi:8380/jenkins/job/nabla-installer-visma/lastSuccessfulBuild/artifact/visma-installer/target/ 
+Visma is a very basic code done for an interview that you can easily install using [IZPack](http://izpack.org/) at [installer](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-visma/lastSuccessfulBuild/artifact/visma-installer/target/)
 Goal is to provide an easy maven starter with basic integration and metric for any code interview working.
-Goal is also to have as much testing tools ready to work altogether (like junit, mock, selenium, cucumber). Because there is always one incompatiblity between them...
+Goal is also to have as much testing tools ready to work altogether (like junit, mock, selenium, cucumber). 
+Because there is always one incompatiblity between them...
 GUI is working on jetty! It is basic, but it has coverage, debug mode, monitoring (JMX and NewRelic) and even some perf testing.
 Code is not yet using the best tool like REST, and AngularJS and has no database. 
 It is just not realistic to have the cutting edge technology for an interview whithin a few hours.
@@ -132,4 +167,5 @@ Thanks for reading
 ***
 
 Alban Andrieu
-fr.linkedin.com/in/nabla/
+
+[linkedin](fr.linkedin.com/in/nabla/)
