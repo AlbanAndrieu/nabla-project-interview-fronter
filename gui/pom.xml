@@ -809,6 +809,7 @@
 				</dependency>		        
             </dependencies>
 
+			<!--
             <build>
                 <plugins>
 					<plugin>
@@ -843,7 +844,8 @@
 						</executions>
 					</plugin>					
                 </plugins>
-            </build>					
+            </build>				
+            -->	
 	    <!--
 		<profile>
             <id>jacoco</id>
