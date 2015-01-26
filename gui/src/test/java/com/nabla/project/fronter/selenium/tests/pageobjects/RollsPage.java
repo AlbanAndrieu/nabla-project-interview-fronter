@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.selenium.tests.pageobjects;
+package com.nabla.project.fronter.selenium.tests.pageobjects;
 
 import java.util.concurrent.TimeUnit;
 
@@ -45,7 +45,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.nabla.project.visma.selenium.tests.helper.SeleniumHelper;
+import com.nabla.project.fronter.selenium.tests.helper.SeleniumHelper;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -59,21 +59,19 @@ import cucumber.api.java.en.When;
  * @version $Revision$
  * @since $Date$
  */
-public class LoanPage extends LoadableComponent<LoanPage>
+public class RollsPage extends LoadableComponent<RollsPage>
 {
 
-    private final String url = "/visma/loan.xhtml";
+    private final String url = "/visma/rolls.xhtml";
     // private final String title = "JSF 2.0 Visma Loan test";
 
-    @FindBy(name = "loan_form:loanAmount")
-    private WebElement   loanAmount;
-    @FindBy(name = "loan_form:paybackTime")
-    private WebElement   paybackTime;
+    @FindBy(name = "rolls_form:rolls")
+    private WebElement   rolls;
 
     @FindBy(name = "loan_form:payment")
     private WebElement   calculate;
 
-    public LoanPage()
+    public RollsPage()
     {
         PageFactory.initElements(SeleniumHelper.getDriver(), this);
     }
@@ -88,7 +86,7 @@ public class LoanPage extends LoadableComponent<LoanPage>
     protected void isLoaded()
     {
         final String url = SeleniumHelper.getDriver().getCurrentUrl();
-        Assert.assertTrue("Not on the issue entry page: " + url, url.endsWith("/loan.xhtml"));
+        Assert.assertTrue("Not on the issue entry page: " + url, url.endsWith("/rolls.xhtml"));
         // Assert.assertTrue(this.driver.getTitle().equals(this.title));
     }
 
@@ -97,7 +95,7 @@ public class LoanPage extends LoadableComponent<LoanPage>
         SeleniumHelper.close();
     }
 
-    @Given("the user is on Loan Page")
+    @Given("the user is on Rolls Page")
     public void The_user_is_on_loan_page()
     {
 
@@ -115,38 +113,31 @@ public class LoanPage extends LoadableComponent<LoanPage>
         System.out.println("Page Load Time is " + ((loadEventEnd - navigationStart) / 1000) + " seconds.");
 
         // Wait for the Calculate Button
-        new WebDriverWait(SeleniumHelper.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.id("loan_form:payment")));
+        new WebDriverWait(SeleniumHelper.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.id("rolls_form:score")));
 
         // WebElement myDynamicElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.id("loan_form")));
-        Assert.assertEquals("Housing Loan Cost Calculator", SeleniumHelper.getDriver().findElement(By.cssSelector("h3")).getText());
+        Assert.assertEquals("Kata Bowling Calculator", SeleniumHelper.getDriver().findElement(By.cssSelector("h3")).getText());
 
     }
 
-    @When("he enters \"([^\"]*)\" as loan amount")
-    public void He_enters_loan_amount(final String aLoanAmount)
+    @When("he enters \"([^\"]*)\" as rolls")
+    public void He_enters_rolls(final String aRolls)
     {
-        this.loanAmount.clear();
-        this.loanAmount.sendKeys(aLoanAmount);
+        this.rolls.clear();
+        this.rolls.sendKeys(aRolls);
     }
 
-    @And("he enters \"([^\"]*)\" as payback time")
-    public void He_enters_payback_time(final String aPaybackTime)
-    {
-        this.paybackTime.clear();
-        this.paybackTime.sendKeys(aPaybackTime);
-    }
-
-    @And("he Submits request for payments calculation")
-    public void He_submits_request_for_fund_transfer()
+    @And("he Submits request for score calculation")
+    public void He_submits_request_for_score()
     {
         final WebDriverWait wait = new WebDriverWait(SeleniumHelper.getDriver(), 10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.name("loan_form:payment")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.name("rolls_form:score")));
         SeleniumHelper.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         this.calculate.click();
     }
 
-    @Then("ensure the payment schedule is accurate with \"([^\"]*)\" message")
-    public void Ensure_the_fund_transfer_is_complete(final String msg)
+    @Then("ensure the score is accurate with \"([^\"]*)\" message")
+    public void Ensure_score_is_complete(final String msg)
     {
         final WebElement message = SeleniumHelper.getDriver().findElement(By.cssSelector("h4"));
         Assert.assertEquals(message.getText(), msg);
@@ -155,32 +146,17 @@ public class LoanPage extends LoadableComponent<LoanPage>
     @Then("ensure a transaction failure message \"([^\"]*)\" is displayed")
     public void Ensure_a_transaction_failure_message(final int i, final String msg)
     {
-        final WebElement message = SeleniumHelper.getDriver().findElement(By.xpath("//table[@id='loan_form:panel']/tbody/tr[" + i + "]/td[3]/span"));
+        final WebElement message = SeleniumHelper.getDriver().findElement(By.xpath("//table[@id='rolls_form:panel']/tbody/tr[" + i + "]/td[3]/span"));
         Assert.assertEquals(message.getText(), msg);
 
     }
 
-    public void calculatePayments(final String loanAmount, final String paybackTime)
+    public void calculateScore(final String aRolls)
     {
 
-        this.He_enters_loan_amount(loanAmount);
-        this.He_enters_payback_time(paybackTime);
+        this.He_enters_rolls(aRolls);
 
-        // wait for the application to get fully loaded
-        /*
-         * final WebElement findOwnerLink = (new WebDriverWait(this.driver, 5)).until(new ExpectedCondition<WebElement>()
-         * {
-         * @Override
-         * public WebElement apply(final WebDriver d)
-         * {
-         * // d.get(baseUrl);
-         * return calculate);
-         * }
-         * });
-         * findOwnerLink.click();
-         */
-
-        this.He_submits_request_for_fund_transfer();
+        this.He_submits_request_for_score();
 
     }
 

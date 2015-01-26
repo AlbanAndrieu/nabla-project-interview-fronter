@@ -31,21 +31,15 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.selenium.tests;
+package com.nabla.project.fronter.api;
 
-import org.junit.runner.RunWith;
-
-import cucumber.api.junit.Cucumber;
-
-/**
- * DOCUMENT ME! albandri.
- * 
- * @author $Author$
- * @version $Revision$
- * @since $Date$
- */
-@RunWith(Cucumber.class)
-// @Cucumber.Options(format = { "pretty", "html:target/cucumber-html-report", "json-pretty:target/cucumber-report.json" })
-public class RunCukesSTest
+public interface IGameService
 {
+
+    /**
+     * Get the score of your game
+     * 
+     * @return the score of your game
+     */
+    Integer getScore(String rolls);
 }

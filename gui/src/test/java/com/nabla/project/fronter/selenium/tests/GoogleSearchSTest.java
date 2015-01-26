@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.selenium.tests;
+package com.nabla.project.fronter.selenium.tests;
 
 import java.io.File;
 

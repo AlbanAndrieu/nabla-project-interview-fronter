@@ -6,13 +6,14 @@
       xmlns:h="http://java.sun.com/jsf/html">
 	
     <h:head>
-    	<title>JSF 2.0 Visma Loan test results</title>
+    	<title>JSF 2.0 Visma Kata bowling score results</title>
     	 <h:outputStylesheet library="css" name="styles.css"  /> 	
     </h:head>
     <h:body bgcolor="white">
-    	<h3><b>Housing Loan Cost Calculator (Results)</b></h3>
-    	<h4>Payments total is : #{input.totalPayment}</h4>
+    	<h3><b>Kata bowling Calculator (Results)</b></h3>
+    	<h4>Score is : #{input.score}</h4>
     	<br/>
+    	<!-- 
 		<h:outputLabel>For your loan with interest rate 5.5 % :<br/>You will pay back the following amounts over the next #{input.scheduledPaymentNumber} month(s)</h:outputLabel>
 		<br/>
     	<h4>The payments are scheduled as follow :</h4>
@@ -29,7 +30,8 @@
          #{scheduledPayments.loanAmount}
       </h:column>
    </h:dataTable>
+    -->
     	<br/>
-        <h:link outcome="loan" value="Back home"/>
+        <h:link outcome="rolls" value="Back home"/>
     </h:body>
 </html>

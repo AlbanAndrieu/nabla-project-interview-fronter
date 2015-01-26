@@ -31,12 +31,9 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma;
+package com.nabla.project.fronter;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -46,7 +43,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
 
-import com.nabla.project.visma.api.ILoanService;
+import com.nabla.project.fronter.api.IGameService;
 
 @ManagedBean(name = "input", eager = true)
 @SessionScoped
@@ -65,65 +62,29 @@ public class QueryBean implements Serializable
         }
     }
 
-    private BigDecimal      loanAmount   = new BigDecimal(200_000);
+    private String         rolls   = "";
 
-    private int             paybackTime  = 30;
-
-    private int             interestType = 1;
-
-    private BigDecimal      totalPayment = BigDecimal.ZERO;
+    private Integer        score   = 0;
 
     @ManagedProperty(value = "#{navigationBean}")
-    private NavigationBean  navigationBean;
-
-    private PaymentSchedule paymentSchedule;
+    private NavigationBean navigationBean;
 
     // @Inject
-    ILoanService            service      = new LoanService();
+    IGameService           service = new KataService();
 
-    public BigDecimal getLoanAmount()
+    public String getRolls()
     {
-        return this.loanAmount;
+        return this.rolls;
     }
 
-    public void setLoanAmount(final BigDecimal loanAmount)
+    public void setRolls(final String aRolls)
     {
-        this.loanAmount = loanAmount;
+        this.rolls = aRolls;
     }
 
-    public int getPaybackTime()
+    public void setScore(final Integer aScore)
     {
-        return this.paybackTime;
-    }
-
-    public int getInterestType()
-    {
-        return this.interestType;
-    }
-
-    public void setInterestType(final int aInterestType)
-    {
-        this.interestType = aInterestType;
-    }
-
-    public void setPaybackTime(final int paybackTime)
-    {
-        this.paybackTime = paybackTime;
-    }
-
-    public BigDecimal getTotalPayment()
-    {
-        return this.totalPayment;
-    }
-
-    public void setTotalPayment(final BigDecimal totalPayment)
-    {
-        this.totalPayment = totalPayment;
-    }
-
-    public int getScheduledPaymentNumber()
-    {
-        return this.paymentSchedule.size();
+        this.score = aScore;
     }
 
     public void setNavigationBean(final NavigationBean navigationBean)
@@ -131,42 +92,22 @@ public class QueryBean implements Serializable
         this.navigationBean = navigationBean;
     }
 
-    public PaymentSchedule getPaymentSchedule()
-    {
-        return this.paymentSchedule;
-    }
-
-    public void setPaymentSchedule(final PaymentSchedule paymentSchedule)
-    {
-        this.paymentSchedule = paymentSchedule;
-    }
-
     /**
-     * Get scheduled payments.
+     * Get score.
      * 
      * @return
      */
-    public String getPayments()
+    public String getScore()
     {
-        // Get payments from service
-        final Map<Integer, List<BigDecimal>> myPaymentSchedule = this.service.calcMonthlyPayment(this.getLoanAmount(), this.getPaybackTime());
-
-        System.out.println("PaymentSchedule is : " + myPaymentSchedule.toString());
-        if (QueryBean.LOGGER.isDebugEnabled())
-        {
-            QueryBean.LOGGER.debug("PaymentSchedule is : " + myPaymentSchedule.toString());
-        }
-
-        this.setPaymentSchedule(new PaymentSchedule(myPaymentSchedule));
-        this.setTotalPayment(this.service.getTotalPayment(this.getLoanAmount(), this.getPaybackTime()));
+        this.setScore(this.service.getScore(this.getRolls()));
 
         // Set computation ERROR
         final FacesMessage msg = new FacesMessage("Something went wrong!", "Please check your input");
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-        FacesContext.getCurrentInstance().addMessage("loan", msg);
+        FacesContext.getCurrentInstance().addMessage("rolls", msg);
 
         // Go to payment page
-        return this.navigationBean.redirectToPayment();
+        return this.navigationBean.redirectToScore();
 
     }
 }

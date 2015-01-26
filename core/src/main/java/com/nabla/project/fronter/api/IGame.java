@@ -40,27 +40,28 @@ package com.nabla.project.fronter.api;
  * @version $Revision$
  * @since $Date$
  */
-public interface IGame {
+public interface IGame
+{
 
-	/**
-	 * Give the rolls entered for the game.
-	 * 
-	 * @return the rolls of the game
-	 */
-	String getRolls();
+    /**
+     * Give the rolls entered for the game.
+     * 
+     * @return the rolls of the game
+     */
+    String getRolls();
 
-	/**
-	 * Give the final score of the game.
-	 * 
-	 * @return the score of the game
-	 */
-	int getScore();
+    /**
+     * Give the final score of the game.
+     * 
+     * @return the score of the game
+     */
+    int getScore();
 
-	/**
-	 * Give the name of the game.
-	 * 
-	 * @return the name of the game
-	 */
-	String getName();
+    /**
+     * Give the name of the game.
+     * 
+     * @return the name of the game
+     */
+    String getName();
 
 }

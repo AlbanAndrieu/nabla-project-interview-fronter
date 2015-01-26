@@ -41,8 +41,8 @@ import com.nabla.project.fronter.api.IGame;
 @SuppressWarnings("all")
 public class Fronter
 {
-	public static final String DEFAULT_ROLLS_SAMPLE = "5/5/5/-/525/-/5/XXX/5";
-	
+    public static final String DEFAULT_ROLLS_SAMPLE = "5/5/5/-/525/-/5/XXX/5";
+
     public static void main(final String[] args)
     {
         String rolls;
@@ -55,7 +55,6 @@ public class Fronter
         }
 
         final IGame game = new KataBowling(rolls);
-
 
     }
 

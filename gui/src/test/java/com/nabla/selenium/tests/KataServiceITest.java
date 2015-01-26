@@ -33,8 +33,6 @@
  */
 package com.nabla.selenium.tests;
 
-import java.math.BigDecimal;
-
 import org.apache.log4j.Logger;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -46,24 +44,22 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.nabla.project.visma.LoanService;
-import com.nabla.project.visma.NavigationBean;
-import com.nabla.project.visma.Payment;
-import com.nabla.project.visma.PaymentSchedule;
-import com.nabla.project.visma.QueryBean;
-import com.nabla.project.visma.api.ILoanService;
+import com.nabla.project.fronter.KataService;
+import com.nabla.project.fronter.NavigationBean;
+import com.nabla.project.fronter.QueryBean;
+import com.nabla.project.fronter.api.IGameService;
 
 @RunWith(Arquillian.class)
-public class LoanServiceITest
+public class KataServiceITest
 {
 
-    private static final Logger LOGGER = Logger.getLogger(LoanServiceITest.class);
+    private static final Logger LOGGER = Logger.getLogger(KataServiceITest.class);
 
     @Deployment
     // @org.jboss.arquillian.container.test.api.TargetsContainer("arq-jetty-embedded")
     public static Archive<?> createTestArchive()
     {
-        return ShrinkWrap.create(WebArchive.class, "visma.war").addClasses(ILoanService.class, LoanService.class, QueryBean.class, Payment.class, PaymentSchedule.class, NavigationBean.class);
+        return ShrinkWrap.create(WebArchive.class, "fronter.war").addClasses(IGameService.class, KataService.class, QueryBean.class, NavigationBean.class);
         // .setWebXML("WEB-INF/web.xml");
 
         // .addAsResource("loan.xhtml", "loan.xhtml").addAsResource("payment.xhtml", "payment.xhtml")
@@ -78,7 +74,7 @@ public class LoanServiceITest
     }
 
     // @Inject
-    ILoanService service = new LoanService();
+    IGameService service = new KataService();
 
     // @Inject
     // private static transient Logger LOGGER = Logger.getLogger(LoanServiceITest.class);
@@ -88,12 +84,12 @@ public class LoanServiceITest
     public void testRegister() throws Exception
     {
 
-        LoanServiceITest.LOGGER.info("this will go to the console if the level is set correctly");
+        KataServiceITest.LOGGER.info("this will go to the console if the level is set correctly");
 
-        final BigDecimal total = this.service.getTotalPayment(new BigDecimal(200_000), 30);
+        final Integer score = this.service.getScore("XX");
 
-        Assert.assertNotNull(total);
-        Assert.assertEquals("408808.080969842113801990388563829760", total.toString());
+        Assert.assertNotNull(score);
+        Assert.assertEquals("30", score.toString());
         ;
     }
 

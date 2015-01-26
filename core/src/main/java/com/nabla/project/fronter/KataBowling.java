@@ -48,21 +48,21 @@ import com.nabla.project.fronter.api.IGame;
 public class KataBowling implements IGame, Comparable<KataBowling>, Serializable
 {
 
-    private static final long  serialVersionUID = 1L;
+    private static final long  serialVersionUID      = 1L;
 
-    public static final String DEFAULT_NAME     = "KataBowling";
+    public static final String DEFAULT_NAME          = "KataBowling";
 
-    private final String       name             = KataBowling.DEFAULT_NAME; // NOSONAR
-    
-    public static final int DEFAULT_FRAMES_NUMBER = 10;
-    public static final int DEFAULT_PINS_NUMBER = 10;
-    public static final int DEFAULT_TRIES_NUMBER = 2;
-    
+    private final String       name                  = KataBowling.DEFAULT_NAME; // NOSONAR
+
+    public static final int    DEFAULT_FRAMES_NUMBER = 10;
+    public static final int    DEFAULT_PINS_NUMBER   = 10;
+    public static final int    DEFAULT_TRIES_NUMBER  = 2;
+
     @Nonnull
-    //@Pattern(regexp="(\\d\\/)+\\d", message="Invalid rolls!")
-    private final String   rolls;
-    
-    private int score = 0;
+    // @Pattern(regexp="(\\d\\/)+\\d", message="Invalid rolls!")
+    private final String       rolls;
+
+    private int                score                 = 0;
 
     public KataBowling()
     {
@@ -102,12 +102,12 @@ public class KataBowling implements IGame, Comparable<KataBowling>, Serializable
         return this.name;
     }
 
+    @Override
+    public int getScore()
+    {
+        return new DecodeFrame(this.getRolls()).compute();
+    }
 
-	@Override
-	public int getScore() {
-		return new DecodeFrame(this.getRolls()).compute();
-	}
-	
     @Override
     public final String toString()
     {

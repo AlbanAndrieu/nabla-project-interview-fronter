@@ -1,26 +1,22 @@
 import org.junit.Test
 
-import com.nabla.project.visma.BasicPaymentMethod
-import com.nabla.project.visma.House
-import com.nabla.project.visma.HouseLoan
-import com.nabla.project.visma.api.ILoan
-import com.nabla.project.visma.api.IProduct
+import com.nabla.project.fonter.KataService
+import com.nabla.project.fonter.api.IGame
 import static org.junit.Assert.assertEquals
 
 class SampleITest extends GroovyTestCase {
 
     @Test
     void testVisma() {
-        final IProduct product = new House(new BigDecimal(200_000));
-        final ILoan loan = new HouseLoan(product, 30, 6.5);
+        final IGame game = new KataService("XXX");
 
-        System.out.println("Payment schedule is :\n " + loan.calcMonthlyPayment() + "\n");
+        System.out.println("Score is :\n " + game.getScore() + "\n");
 
-        assertEquals 360, loan.calcMonthlyPayment().size()
+        assertEquals 30, game.getScore().size()
         
-        final BigDecimal totalPayment = new BasicPaymentMethod(loan).getTotalPayment();
+        final Integer score = game.getScore();
 
-        assert "455088.976914933887072998806891835200" == totalPayment.toString();
+        assert "30" == score.toString();
     }
 
 }

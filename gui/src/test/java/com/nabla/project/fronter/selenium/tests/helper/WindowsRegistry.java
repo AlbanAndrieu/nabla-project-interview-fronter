@@ -31,26 +31,31 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.api;
+package com.nabla.project.fronter.selenium.tests.helper;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
+import org.junit.Assert;
+import org.openqa.selenium.os.WindowsUtils;
 
-public interface ILoanService
+/**
+ * DOCUMENT ME! albandri.
+ * 
+ * @author $Author$
+ * @version $Revision$
+ * @since $Date$
+ */
+public class WindowsRegistry
 {
+    // @Test
+    public void testReadRegistry()
+    {
+        final String osname = WindowsUtils.readStringRegistryValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName");
+        System.out.println(osname);
+    }
 
-    /**
-     * Give monthly payback plan based on the product, interest and payback time
-     * 
-     * @return a date with their corresponding amount and interest
-     */
-    Map<Integer, List<BigDecimal>> calcMonthlyPayment(BigDecimal loanAmount, int numberOfYears);
-
-    /**
-     * Get the total of all scheduled payment
-     * 
-     * @return sum of payments
-     */
-    BigDecimal getTotalPayment(BigDecimal loanAmount, int numberOfYears);
+    // @Test
+    public void testWriteRegistry()
+    {
+        WindowsUtils.writeStringRegistryValue("HKEY_CURRENT_USER\\SOFTWARE\\Selenium\\SeleniumVersion", "2.24");
+        Assert.assertEquals("2.24", WindowsUtils.readStringRegistryValue("HKEY_CURRENT_USER\\SOFTWARE\\Selenium\\SeleniumVersion"));
+    }
 }

@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.selenium.tests;
+package com.nabla.project.fronter.selenium.tests;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -51,7 +51,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.nabla.project.visma.selenium.tests.helper.SeleniumHelper;
+import com.nabla.project.fronter.selenium.tests.helper.SeleniumHelper;
 
 @RunWith(value = Parameterized.class)
 public class SimpleParametrizedWebDriverSTest

@@ -31,10 +31,11 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.selenium.tests.helper;
+package com.nabla.project.fronter.selenium.tests;
 
-import org.junit.Assert;
-import org.openqa.selenium.os.WindowsUtils;
+import org.junit.runner.RunWith;
+
+import cucumber.api.junit.Cucumber;
 
 /**
  * DOCUMENT ME! albandri.
@@ -43,19 +44,8 @@ import org.openqa.selenium.os.WindowsUtils;
  * @version $Revision$
  * @since $Date$
  */
-public class WindowsRegistry
+@RunWith(Cucumber.class)
+// @Cucumber.Options(format = { "pretty", "html:target/cucumber-html-report", "json-pretty:target/cucumber-report.json" })
+public class RunCukesSTest
 {
-    // @Test
-    public void testReadRegistry()
-    {
-        final String osname = WindowsUtils.readStringRegistryValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName");
-        System.out.println(osname);
-    }
-
-    // @Test
-    public void testWriteRegistry()
-    {
-        WindowsUtils.writeStringRegistryValue("HKEY_CURRENT_USER\\SOFTWARE\\Selenium\\SeleniumVersion", "2.24");
-        Assert.assertEquals("2.24", WindowsUtils.readStringRegistryValue("HKEY_CURRENT_USER\\SOFTWARE\\Selenium\\SeleniumVersion"));
-    }
 }

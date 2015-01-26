@@ -31,59 +31,28 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma;
+package com.nabla.project.fronter;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
-public class PaymentTest
+@ManagedBean
+@SessionScoped
+public class NavigationBean implements Serializable
 {
 
-    final Payment payment = new Payment(new BigDecimal(100));
+    private static final long serialVersionUID = -1074473345848765304L;
 
-    @Before
-    public void setUp() throws Exception
+    /**
+     * Redirect to score page.
+     * 
+     * @return Score page name.
+     */
+    public String redirectToScore()
     {
-    }
-
-    @After
-    public void tearDown() throws Exception
-    {
-    }
-
-    @Test
-    public void testConstructor()
-    {
-        final Payment payment = new Payment(new BigDecimal(100));
-        Assert.assertNotNull(payment);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testConstructorWithNull()
-    {
-        final Payment payment = new Payment(null);
-        Assert.assertNotNull(payment);
-    }
-
-    public final void testGetLoanAmount()
-    {
-
-        Assert.assertNotNull(this.payment.getLoanAmount());
-        Assert.assertEquals(new BigDecimal(100), this.payment.getLoanAmount());
-
-    }
-
-    @Test
-    public final void testToString()
-    {
-
-        Assert.assertEquals("loanAmount:100", this.payment.toString());
-        Assert.assertFalse(this.payment.equals("loanAmount:100"));
-
+        return "score?faces-redirect=true";
     }
 
 }

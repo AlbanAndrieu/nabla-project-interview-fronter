@@ -31,43 +31,35 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma;
+package com.nabla.project.fronter;
 
-import java.math.BigDecimal;
+import org.apache.log4j.Logger;
 
-// TODO move this class to core module
-public class Payment
+import com.nabla.project.fronter.KataBowling;
+import com.nabla.project.fronter.api.IGame;
+import com.nabla.project.fronter.api.IGameService;
+
+//The @Stateless annotation eliminates the need for manual transaction
+//TODO @Stateless
+public class KataService implements IGameService
 {
 
-    private final BigDecimal loanAmount;
-
-    // TODO add interest member
-
-    public Payment(final BigDecimal aLoanAmount)
-    {
-        this.loanAmount = aLoanAmount;
-
-        if (null == this.loanAmount)
-        {
-            throw new IllegalArgumentException("Loan amount cannot be null");
-        }
-    }
-
-    public BigDecimal getLoanAmount()
-    {
-        return this.loanAmount;
-    }
+    // TODO @Inject
+    private static final transient Logger LOGGER = Logger.getLogger(KataService.class);
 
     @Override
-    public String toString()
+    // @GET
+    // @Produces({ MediaType.APPLICATION_ATOM_XML, MediaType.APPLICATION_JSON })
+    public Integer getScore(String rolls)
     {
 
-        final StringBuilder str = new StringBuilder();
+        if (KataService.LOGGER.isDebugEnabled())
+        {
+            KataService.LOGGER.debug("Start getScore for rolls: " + rolls);
+        }
 
-        str.append("loanAmount:").append(this.getLoanAmount());
+        final IGame kata = new KataBowling(rolls);
 
-        return str.toString();
-
+        return kata.getScore();
     }
-
 }

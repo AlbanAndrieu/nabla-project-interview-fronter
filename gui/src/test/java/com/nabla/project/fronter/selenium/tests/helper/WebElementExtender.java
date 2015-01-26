@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package com.nabla.project.visma.selenium.tests.helper;
+package com.nabla.project.fronter.selenium.tests.helper;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
