@@ -113,22 +113,24 @@ The main project provides a continuous delivery build farm and everything needed
 
 You will also have stuff like :
 
- - Jenkins (scheduler)
- - Sonar (metrics)
- - Nexus (repository)
- - Docker (provisioning)
- - Logstash (monitoring)
- - Eclipse (with basic plugins), 
- - ZaProxy (security)
- - Jmeter (performance)
- - VisualVM (performance)
- - Selenium and Xvfb (End2End test)
+ - [jenkins](http://jenkins-ci.org/) (scheduler)
+ - [sonar](http://www.sonarqube.org/) (metrics)
+ - [nexus](http://www.sonatype.org/nexus/) (repository)
+ - [docker](https://www.docker.com/) (provisioning)
+ - [vagrant](https://www.vagrantup.com/) (provisioning)
+ - [virtualbox](https://www.virtualbox.org/) (provisioning)
+ - [logstash](http://logstash.net/) (monitoring)
+ - [eclipse](https://eclipse.org/home/index.php) (with basic plugins), 
+ - [za-proxy](https://code.google.com/p/zaproxy/) (security)
+ - [jmeter](http://jmeter.apache.org/) (performance)
+ - [visualVM](http://visualvm.java.net/) (performance)
+ - [selenium](http://www.seleniumhq.org/) and Xvfb (End2End test)
  
-There is also a FrontEnd Apache with mod pagespeed, fail2ban, DeniedOfService, AWStats, a Varnish load balancer, Zabbix, Mon, Monit, Supervisor, Jboss, Tomcat ready and more.
+There is also a FrontEnd [apache](http://httpd.apache.org/) with mod [pagespeed](https://developers.google.com/speed/pagespeed/), [fail2ban](http://www.fail2ban.org/wiki/index.php/Main_Page), DeniedOfService, [AWStats](http://www.awstats.org/), a [Varnish](https://www.varnish-cache.org/) load balancer, [Zabbix](http://www.zabbix.com/), Mon, [Monit](http://mmonit.com/monit/), [Supervisor](http://supervisord.org/), [Jboss](http://www.jboss.org/), [Tomcat](http://tomcat.apache.org/) ready and more.
 
 Essentially, there is a bit more than the basic tools for a production, staging, dev environment all configured to work together with as much security as possible.
 
-My "old" project is https://code.google.com/p/alban/ which is using http://www.andromda.org/index.html as an UML code generator. 
+My "old" project [nabla](https://code.google.com/p/alban/) which is using [andromda](http://www.andromda.org/index.html) as an UML code generator. 
 I am now using this project more because it generates a lot of code and it is resource-demanding for my devops environment. 
 This project is using JBoss, Seam, Hibernate, Spring,GWT, JSF, Arquillian, ... So it was quite hard to get Jacoco with mutation testing to work with it.
 In this repo there's also some sample projects used as ProofOfConcept
