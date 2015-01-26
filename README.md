@@ -55,6 +55,11 @@ Please find below output of this sample:
 Remarks : fronter installer is produced during the jenkins build , especially [here](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-fronter/).
 In order to install, double click on the [FRONTERInstaller.jar](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-fronter/lastSuccessfulBuild/artifact/fronter-installer/target/FRONTERInstaller.jar)
 
+On unix, please make sure you can execute the installer :
+
+    chmod 777 FRONTERInstaller.jar
+    sudo ./FRONTERInstaller.jar
+    
 I have also added a quick GUI, that you can find at http://localhost:9090/
 
 ------------------
