@@ -37,11 +37,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
-import org.jboss.arquillian.junit.InSequence;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -134,8 +132,8 @@ public class SimpleParametrizedWebDriverSTest
         Assert.assertEquals(message.getText(), msg);
     }
 
-    @Test
-    @InSequence(1)
+    // @Test
+    // @InSequence(1)
     public void testWithGoodInputS() throws Exception
     {
         // Get the Start Time

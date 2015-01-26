@@ -36,11 +36,9 @@ package com.nabla.project.fronter.selenium.tests;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.time.StopWatch;
-import org.jboss.arquillian.junit.InSequence;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -60,8 +58,8 @@ public class SimpleWebDriverSTest
 
     }
 
-    @Test
-    @InSequence(1)
+    // @Test
+    // @InSequence(1)
     public void testWithGoodInputS() throws Exception
     {
         // Get the Start Time
@@ -98,8 +96,8 @@ public class SimpleWebDriverSTest
         rollsPage.close();
     }
 
-    @Test
-    @InSequence(2)
+    // @Test
+    // @InSequence(2)
     public void testWithWrongInputS() throws Exception
     {
         // Get the StopWatch Object and start the StopWatch

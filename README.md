@@ -42,22 +42,28 @@ What makes this game interesting to score is the lookahead in the scoring for st
 
 ------------------
 
+### Result
+
+Please find below output of this sample:
+
+- Source code repository : [github](https://github.com/AlbanAndrieu/nabla-project-interview-fronter)
+
+- Jenkins : [jenkins](http://home.nabla.mobi:8380/jenkins/job/nabla-project-interview-fronter/) 
+
+- Sonar metrics : [sonar](http://home.nabla.mobi:9000/dashboard/index/2831)
+
 Remarks : fronter installer is produced during the jenkins build , especially [here](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-fronter/).
 In order to install, double click on the [FRONTERInstaller.jar](http://home.nabla.mobi:8380/jenkins/job/nabla-installer-fronter/lastSuccessfulBuild/artifact/fronter-installer/target/FRONTERInstaller.jar)
+
+I have also added a quick GUI, that you can find at http://localhost:9090/
 
 ------------------
 
 Other resources can be found on my [googlecode](https://code.google.com/p/alban/w/list) wiki:
 
-- Source code repository : [github](https://github.com/AlbanAndrieu/nabla-project-interview-fronter)
-
-- Jenkins policy : [jenkins](http://home.nabla.mobi:8380/jenkins/job/nabla-project-interview-fronter/) 
-
 - Set up your workstation : [workstation](https://github.com/AlbanAndrieu/ansible-workstation) 
 
 - Set up your build environement : [servers](https://github.com/AlbanAndrieu/ansible-nabla) 
-
-- Sonar metrics : [sonar](http://home.nabla.mobi:9000/)
 
 - Nexus : [nexus](http://home.nabla.mobi:8081/nexus/index.html#welcome)
 
